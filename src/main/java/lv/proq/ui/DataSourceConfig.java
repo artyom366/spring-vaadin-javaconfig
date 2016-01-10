@@ -12,7 +12,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 
 @Configuration
-@PropertySource("classpath:application.properties")
 public class DataSourceConfig {
 
     @Value("${spring.datasource.driverClassName}")
@@ -40,10 +39,10 @@ public class DataSourceConfig {
     @Bean(name = "dataSource")
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/erp");
-        driverManagerDataSource.setUsername("root");
-        driverManagerDataSource.setPassword("qwertz");
+        driverManagerDataSource.setDriverClassName(databaseDriverClassName);
+        driverManagerDataSource.setUrl(datasourceUrl);
+        driverManagerDataSource.setUsername(databaseUsername);
+        driverManagerDataSource.setPassword(databasePassword);
         return driverManagerDataSource;
     }
 }
