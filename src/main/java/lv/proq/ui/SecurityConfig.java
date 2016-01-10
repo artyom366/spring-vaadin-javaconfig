@@ -50,26 +50,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.
+//                authorizeRequests()
+//                .antMatchers("/user", "/admin", "/login", "/VAADIN/**", "/PUSH/**", "/UIDL/**").permitAll()
+//                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+//                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .and()
+//                .csrf().disable()
+//                .exceptionHandling()
+//                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"))
+//                .and()
+//                .logout().logoutSuccessUrl("/login");
+//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.
-                authorizeRequests()
-                .antMatchers("/", "/test", "/log1n", "/log1n/*", "/VAADIN/**", "/PUSH/**", "/UIDL/**", "/api/test").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/VAADIN/**", "/PUSH/**", "/UIDL/**", "/login", "/login/**", "/register", "/environment").permitAll()
                 .antMatchers("/user/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .and()
-                .logout()
-                .permitAll()
+                .antMatchers("/**").fullyAuthenticated()
                 .and()
                 .csrf().disable()
                 .exceptionHandling()
-                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/log1n"))
-                .and()
-                .logout().logoutSuccessUrl("/log1n");
+                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
     }
 }
