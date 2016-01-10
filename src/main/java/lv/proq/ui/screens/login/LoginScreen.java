@@ -6,6 +6,7 @@ import com.vaadin.server.VaadinSession;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -39,6 +40,7 @@ public class LoginScreen extends UI {
 
         TextField userName = new TextField("Username");
         PasswordField password = new PasswordField("Password");
+
         Button signIn = new Button(messageSource.getMessage("login.btn", null, VaadinSession.getCurrent().getLocale()));
 
         signIn.addClickListener(new Button.ClickListener() {
@@ -46,7 +48,7 @@ public class LoginScreen extends UI {
             public void buttonClick(Button.ClickEvent clickEvent) {
 
                 UsernamePasswordAuthenticationToken authenticationToken =
-                        new UsernamePasswordAuthenticationToken("user", "pass");
+                        new UsernamePasswordAuthenticationToken(userName.getValue(), password.getValue());
 
                 SecurityContextHolder.getContext()
                         .setAuthentication(manager.authenticate(authenticationToken));
