@@ -1,4 +1,4 @@
-package lv.proq.ui;
+package lv.proq.ui.screens;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;

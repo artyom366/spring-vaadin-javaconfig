@@ -1,4 +1,4 @@
-package lv.proq.ui;
+package lv.proq.ui.screens;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

@@ -1,4 +1,4 @@
-package lv.proq.ui;
+package lv.proq.ui.config;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
  */
 
 @Configuration
-public class DataSourceConfig {
+public class DataSourceConfiguration {
 
     @Value("${spring.datasource.driverClassName}")
     private String databaseDriverClassName;
@@ -25,16 +25,6 @@ public class DataSourceConfig {
 
     @Value("${spring.datasource.password}")
     private String databasePassword;
-
-//    @Bean
-//    public DataSource dataSource() {
-//        DataSource dataSource = new DataSource();
-//        dataSource.setDriverClassName(databaseDriverClassName);
-//        dataSource.setUrl(datasourceUrl);
-//        dataSource.setUsername(databaseUsername);
-//        dataSource.setPassword(databasePassword);
-//        return dataSource;
-//    }
 
     @Bean(name = "dataSource")
     public DriverManagerDataSource dataSource() {

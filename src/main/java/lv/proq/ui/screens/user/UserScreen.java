@@ -1,15 +1,14 @@
-package lv.proq.ui;
+package lv.proq.ui.screens.user;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.spring.navigator.SpringViewProvider;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
-import lv.proq.ui.LoginLayout;
+import lv.proq.ui.service.Greeter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
@@ -19,8 +18,8 @@ import javax.sql.DataSource;
  */
 
 @Theme("mytheme")
-@SpringUI(path = "login")
-public class LoginScreen extends UI {
+@SpringUI(path = "user")
+public class UserScreen extends UI {
 
     @Autowired
     private Greeter greeter;
